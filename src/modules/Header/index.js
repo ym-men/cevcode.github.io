@@ -1,17 +1,15 @@
 import React from 'react';
 import { Row, Column } from '../../ui/Layout/index.js';
-import Menu from './Menu';
-import Logo from './Logo';
+import Title from 'ui/Title';
 
 class Header extends React.PureComponent {
-    render() {
-        return (
-            <Row className="header" jc="space-between">
-                <Logo />
-                <Menu />
-            </Row>
-        );
-    }
+  render() {
+    return (
+      <Row className="header" jc="space-between">
+        <Title>Home Finance</Title>
+      </Row>
+    );
+  }
 }
 
 export default Header;

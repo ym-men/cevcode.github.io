@@ -1,0 +1,25 @@
+@import "../index.scss";
+
+.about {
+  margin-top: rem(110px);
+  &__image {
+    width: rem(550px);
+    margin-right: rem(30px);
+    &-container {
+      width: rem(450px);
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+  &__title {
+    margin-top: rem(80px);
+    margin-right: rem(20px);
+    h2 {
+      @include main-font(500);
+      font-size: 3vw;
+    }
+  }
+
+  &__content {
+  }
+}

@@ -1,0 +1,8 @@
+@import 'menuItem.scss';
+@import '../index.scss';
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

@@ -1,18 +1,16 @@
 import React from 'react';
 import { Column, Row } from 'ui/Layout';
-import Select from 'ui/Fields/Select';
-import CurrencyInput from 'ui/Fields/CurrencyInput';
-import Input from 'ui/Fields/Input';
-import Button from '../../../ui/Button';
+import Form from './components/form';
+import Filters from './components/filters';
+import OperationsList from 'modules/Operations/list';
 
 const About = () => {
   return (
-    <Row className="filters" ai="flex-start" jc="space-between">
-      <Select />
-      <CurrencyInput />
-      <Input />
-      <Button text="add " />
-    </Row>
+    <Column>
+      <Form />
+      <Filters />
+      <OperationsList />
+    </Column>
   );
 };
 

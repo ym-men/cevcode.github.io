@@ -1,6 +1,5 @@
 import About from '../modules/Main/Home';
-import Contacts from '../modules/Main/Contacts';
-import Projects from '../modules/Main/Projects';
+
 import App from '../App/App';
 import { addDefault } from '../helpers/index';
 
@@ -11,19 +10,19 @@ const generateRoutes = function(options = {}) {
   return [
     {
       component: App,
-      path: locale + '/',
-      routes: [
-        {
-          exact: true,
-          component: Contacts,
-          path: locale + '/home-finance-level-1'
-        },
-        {
-          exact: true,
-          component: Projects,
-          path: locale + '/projects'
-        }
-      ]
+      path: locale + '/'
+      // routes: [
+      //     {
+      //         exact: true,
+      //         component: Contacts,
+      //         path: locale + '/home-finance-level-1',
+      //     },
+      //     {
+      //         exact: true,
+      //         component: Projects,
+      //         path: locale + '/projects',
+      //     },
+      // ],
     }
   ];
 };

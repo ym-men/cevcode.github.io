@@ -3,3 +3,17 @@
 .home {
 
 }
+
+.form, .filters {
+  margin: rem(20px 0);
+  >* {
+    margin-right: rem(20px);
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  &__description {
+    flex-basis: rem(475px);
+  }
+}
+

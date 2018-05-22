@@ -1,0 +1,11 @@
+@import '../index.scss';
+
+.ux-input {
+  @include base-sizes();
+  height:  rem(44px);
+  border: rem(1px solid $primaryColor);
+  border-radius: rem(5px);
+  font-size: rem(14px);
+  padding: rem(0 10px);
+
+}

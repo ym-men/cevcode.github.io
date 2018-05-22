@@ -1,4 +1,4 @@
-$primaryColor: #798AA1;
+$primaryColor: #adadad;
 $secondaryColor: #242424;
 
 @mixin main-font($weight) {
@@ -117,5 +117,46 @@ $responsive-height: 680px;
 @mixin small-mobile {
   @media only screen and (max-width: #{$small-mobile}) {
     @content;
+  }
+}
+
+@mixin base-sizes() {
+  &__size {
+    &_auto {
+      width: auto;
+    }
+
+    &_xs {
+      width: rem(85px);
+    }
+
+    &_s {
+      width: rem(120px);
+    }
+
+    &_m {
+      width: rem(190px);
+    }
+
+    &_l {
+      width: rem(260px);
+      @include mobile {
+        width: 100%;
+      }
+    }
+
+    &_xl {
+      width: rem(400px);
+      @include mobile {
+        width: 100%;
+      }
+    }
+
+    &_xxl {
+      width: rem(450px);
+      @include mobile {
+        width: 100%;
+      }
+    }
   }
 }

@@ -6,19 +6,23 @@ import Description from 'ui/Description';
 
 const OperationItem = props => {
   const { status, title, operation } = props;
-  console.log(22, operation.income);
   return (
-    <Row className={cx('operation__item', `operation__item_${status}`)}>
+    <Row
+      className={cx('operation__item', `operation__item-${status}`)}
+      jc="space-between"
+    >
       <Column>
-        <Title>{title}</Title>
+        <Title containerClassName="operation__title">{title}</Title>
         {/*<Description>{new Date()}</Description>*/}
       </Column>
-      <Column>
-        <div>{operation.income ? operation.income : '--'}</div>
-      </Column>
-      <Column>
-        <div>{operation.expence ? operation.expence : '--'}</div>
-      </Column>
+      <Row jc="flex-end">
+        <p className="operation__amount">
+          {operation.income ? operation.income : '--'}
+        </p>
+        <p className="operation__amount">
+          {operation.expence ? operation.expence : '--'}
+        </p>
+      </Row>
     </Row>
   );
 };

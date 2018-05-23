@@ -1,5 +1,5 @@
-export const FETCH_PROJECTS = 'games/FETCH_PROJECTS';
+export const FETCH_OPERATIONS = 'games/FETCH_OPERATIONS';
 
 export default {
-    FETCH_PROJECTS,
+  FETCH_OPERATIONS
 };

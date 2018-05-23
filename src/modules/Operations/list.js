@@ -1,15 +1,21 @@
 import React from 'react';
 import { Column, Row } from 'ui/Layout';
-import config from './config';
 import OperationItem from './item';
+import { connect } from 'react-redux';
 
 const OperationsList = props => {
-  console.log(config);
+  const operations = props.operations.list;
   return (
     <Column>
-      {config.map((operation, i) => <OperationItem {...operation} key={i} />)}
+      {operations.map((operation, i) => (
+        <OperationItem {...operation} key={i} />
+      ))}
     </Column>
   );
 };
 
-export default OperationsList;
+const mapStateToProps = state => ({
+  operations: state.operations
+});
+
+export default connect(mapStateToProps)(OperationsList);

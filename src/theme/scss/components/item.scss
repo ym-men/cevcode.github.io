@@ -1,0 +1,42 @@
+@import '../index.scss';
+
+@mixin before($url, $deg) {
+  &:before {
+    content: '';
+    position: absolute;
+    background-image: url($url);
+    transform: rotate($deg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: rem(30px);
+    height: rem(20px);
+    top: calc(100%/2 - 8px);
+    left: rem(20px);
+  }
+}
+.operation {
+  &__item {
+    border: rem(1px solid $primaryColor);
+    height: rem(100px);
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: rem(0 20px);
+    border-radius: rem(5px);
+    margin-bottom: rem(15px);
+    &-income {
+      @include before('src/static/img/icons/arrow-green.svg', 0deg);
+    }
+    &-expence {
+      @include before('src/static/img/icons/arrow-red.svg', 180deg);
+    }
+  }
+  &__amount {
+    display: flex;
+    justify-content: center;
+    min-width: rem(200px);
+  }
+  &__title {
+    margin-left: rem(50px);
+  }
+}

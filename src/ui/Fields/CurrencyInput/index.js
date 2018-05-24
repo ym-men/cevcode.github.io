@@ -1,5 +1,6 @@
 import React from 'react';
 import MaskedInput from 'react-text-mask';
+import { withFormsy } from 'formsy-react';
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 import cx from 'classnames';
 
@@ -13,32 +14,42 @@ const currencyMaskNoLimit = createNumberMask({
   integerLimit: 10
 });
 
-const formValue = value => {
-  if (value === 0) return 0;
-  if (!value) return '';
-  return value;
-};
+class CurrencyInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.changeValue = this.changeValue.bind(this);
+  }
 
-const CurrencyInput = ({
-  onFocus,
-  onBlur,
-  disabled,
-  className,
-  value,
-  curNoLimit = false
-}) => {
-  return (
-    <MaskedInput
-      onFocus={onFocus}
-      onBlur={onBlur}
-      disabled={disabled}
-      mask={curNoLimit ? currencyMaskNoLimit : currencyMask}
-      guide={true}
-      className={cx('ux-input', className)}
-      placeholder="0"
-      value={formValue(value)}
-      onChange={e => e.target.value}
-    />
-  );
-};
-export default CurrencyInput;
+  changeValue(event) {
+    this.props.setValue(event.currentTarget.value);
+  }
+
+  render() {
+    const {
+      onFocus,
+      onBlur,
+      disabled,
+      className,
+      name,
+      curNoLimit = false
+    } = this.props;
+    const errorMessage = this.props.getErrorMessage();
+    return (
+      <div>
+        <MaskedInput
+          name={name}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          disabled={disabled}
+          mask={curNoLimit ? currencyMaskNoLimit : currencyMask}
+          className={cx('ux-input', className)}
+          placeholder="0"
+          value={this.props.getValue() || ''}
+          onChange={this.changeValue}
+        />
+        <span>{errorMessage}</span>
+      </div>
+    );
+  }
+}
+export default withFormsy(CurrencyInput);

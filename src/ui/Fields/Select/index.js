@@ -2,44 +2,51 @@ import React from 'react';
 import ReactSelect from 'react-select';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
+import { withFormsy } from 'formsy-react';
 
 class Select extends React.Component {
-  state = {
-    selectedOption: ''
-  };
-  handleChange = selectedOption => {
-    this.setState({ selectedOption });
-    console.log(`Selected: ${selectedOption.label}`);
-  };
+  constructor(props) {
+    super(props);
+    this.changeValue = this.changeValue.bind(this);
+  }
+
+  changeValue(value) {
+    this.props.setValue(value);
+  }
+
   render() {
-    const { selectedOption } = this.state;
-    const { size, placeholder, searchable } = this.props;
+    const { size, placeholder, searchable, name, options } = this.props;
+    const errorMessage = this.props.getErrorMessage();
 
     return (
-      <ReactSelect
-        className={cx('select', `select__size_${size}`)}
-        name="form-field-name"
-        placeholder={placeholder}
-        searchable={searchable}
-        value={selectedOption}
-        onChange={this.handleChange}
-        options={[
-          { value: 'one', label: 'One' },
-          { value: 'two', label: 'Two' }
-        ]}
-      />
+      <div>
+        <ReactSelect
+          className={cx('select', `select__size_${size}`)}
+          name={name}
+          placeholder={placeholder}
+          searchable={searchable}
+          value={this.props.getValue()}
+          onChange={this.changeValue}
+          options={options}
+        />
+        <span className="error-message">{errorMessage}</span>
+      </div>
     );
   }
 }
 
 Select.propTypes = {
   searchable: PropTypes.bool,
-  size: PropTypes.oneOf(['auto', 'xs', 's', 'm', 'l', 'xl', 'xxl'])
+  size: PropTypes.oneOf(['auto', 'xs', 's', 'm', 'l', 'xl', 'xxl']),
+  name: PropTypes.string,
+  options: PropTypes.array
 };
 
 Select.defaultProps = {
   size: 'l',
   searchable: false,
-  placeholder: 'Choose something'
+  name: '',
+  placeholder: 'Choose something',
+  options: []
 };
-export default Select;
+export default withFormsy(Select);

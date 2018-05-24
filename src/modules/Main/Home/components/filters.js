@@ -7,9 +7,9 @@ import CurrencyInput from 'ui/Fields/CurrencyInput';
 const Filters = () => {
   return (
     <Row className="filters" ai="center" jc="flex-end">
-      <Select size="s" placeholder="$" />
-      <Description>€ => $</Description>
-      <CurrencyInput curNoLimit={true} />
+      {/*<Select size="s" placeholder="$" />*/}
+      {/*<Description>€ => $</Description>*/}
+      {/*<CurrencyInput name="sss" curNoLimit={true} />*/}
     </Row>
   );
 };

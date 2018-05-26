@@ -4,7 +4,7 @@ import Form from './components/form';
 import Filters from './components/filters';
 import OperationsList from 'modules/Operations/list';
 
-const About = () => {
+const Home = () => {
   return (
     <Column>
       <Form />
@@ -14,4 +14,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Home;

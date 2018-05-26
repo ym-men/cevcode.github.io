@@ -3,7 +3,6 @@ import { routerReducer } from 'react-router-redux';
 import { reactReduxFirebase, firebaseReducer } from 'react-redux-firebase';
 import firebase from 'firebase';
 
-import operations from './operations';
 import currency from './currency';
 
 const firebaseConfig = {
@@ -28,6 +27,5 @@ export const createStoreWithFirebase = compose(
 export default combineReducers({
   routing: routerReducer,
   firebase: firebaseReducer,
-  operations,
   currency
 });

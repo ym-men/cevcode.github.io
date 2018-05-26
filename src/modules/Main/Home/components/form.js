@@ -9,8 +9,8 @@ import { withFirebase } from 'react-redux-firebase';
 import Button from 'ui/Button';
 
 const statuses = [
-  { expence: 'Expence', label: 'Expence' },
-  { income: 'Income', label: 'Income' }
+  { expence: 'expence', label: 'Expence' },
+  { income: 'income', label: 'Income' }
 ];
 class Form extends React.Component {
   constructor(props) {
@@ -31,14 +31,14 @@ class Form extends React.Component {
     this.setState({ canSubmit: true });
   }
 
-  onSubmit() {
+  async onSubmit(event) {
+    event.preventDefault();
     const model = this.form.getModel();
     const { firebase } = this.props;
-    firebase.push('operations', model);
+    const result = await firebase.push('operations', model);
   }
 
   render() {
-    const { firebase } = this.props;
     return (
       <Formsy
         onValidSubmit={this.submit}
@@ -51,6 +51,7 @@ class Form extends React.Component {
           <Select
             name="currencySelect"
             size="s"
+            placeholder="Currency"
             options={this.props.currency}
           />
           <CurrencyInput

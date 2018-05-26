@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Column } from '../../ui/Layout/index.js';
+import { Row } from '../../ui/Layout/index.js';
 import Title from 'ui/Title';
 
 class Header extends React.PureComponent {

@@ -6,6 +6,8 @@
   border: rem(1px solid $primaryColor);
   border-radius: rem(5px);
   font-size: rem(14px);
+  box-sizing: border-box;
+  width: rem(100%);
   padding: rem(0 10px);
 
 }

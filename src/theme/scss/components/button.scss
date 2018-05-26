@@ -37,6 +37,8 @@ rem(solid 1px rgba(255, 255, 255, 0.15));
   &:disabled {
     background: $colorBgDisabled;
     border: $borderDisabled;
+    cursor: not-allowed;
+    user-select: none;
   }
 }
 

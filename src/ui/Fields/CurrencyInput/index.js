@@ -3,15 +3,13 @@ import MaskedInput from 'react-text-mask';
 import { withFormsy } from 'formsy-react';
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 import cx from 'classnames';
+import { removeSeparators } from './helpers';
 
 const currencyMask = createNumberMask({
   prefix: '',
-  integerLimit: 2
-});
-
-const currencyMaskNoLimit = createNumberMask({
-  prefix: '',
-  integerLimit: 10
+  integerLimit: 10,
+  thousandsSeparatorSymbol: ' ',
+  allowDecimal: true
 });
 
 class CurrencyInput extends React.Component {
@@ -21,18 +19,11 @@ class CurrencyInput extends React.Component {
   }
 
   changeValue(event) {
-    this.props.setValue(event.currentTarget.value);
+    this.props.setValue(removeSeparators(event.currentTarget.value));
   }
 
   render() {
-    const {
-      onFocus,
-      onBlur,
-      disabled,
-      className,
-      name,
-      curNoLimit = false
-    } = this.props;
+    const { onFocus, onBlur, disabled, className, name } = this.props;
     const errorMessage = this.props.getErrorMessage();
     return (
       <div>
@@ -41,7 +32,7 @@ class CurrencyInput extends React.Component {
           onFocus={onFocus}
           onBlur={onBlur}
           disabled={disabled}
-          mask={curNoLimit ? currencyMaskNoLimit : currencyMask}
+          mask={currencyMask}
           className={cx('ux-input', className)}
           placeholder="0"
           value={this.props.getValue() || ''}

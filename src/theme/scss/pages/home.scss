@@ -17,3 +17,17 @@
   }
 }
 
+.form {
+  &__price {
+    min-width: rem(200px);
+    font-size: rem(20px);
+    display: flex;
+    justify-content: flex-end;
+    &-negative {
+      color: red;
+    }
+  }
+  &__bottom {
+    margin: rem(40px 0);
+  }
+}

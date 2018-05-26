@@ -17,12 +17,12 @@ class Input extends React.Component {
     const { size, placeholder, className, name } = this.props;
     const errorMessage = this.props.getErrorMessage();
     return (
-      <div>
+      <div className={cx(`ux-input__size_${size}`, className)}>
         <input
           type="text"
           onChange={this.changeValue}
           name={name}
-          className={cx('ux-input', `ux-input__size_${size}`, className)}
+          className="ux-input"
           value={this.props.getValue() || ''}
           placeholder={placeholder}
         />

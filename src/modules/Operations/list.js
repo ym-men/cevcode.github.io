@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase';
 
-function buildOperations(operations = {}) {
+const buildOperations = (operations = {}) => {
   if (!isLoaded(operations)) {
     return <Loader />;
   }
@@ -17,13 +17,13 @@ function buildOperations(operations = {}) {
     return <span>list is empty...</span>;
   }
   return Object.keys(operations)
-    .map((key, id) => (
-      <OperationItem key={key} id={id} operation={operations[key]} />
+    .map(key => (
+      <OperationItem key={key} id={key} operation={operations[key]} />
     ))
     .reverse();
-}
+};
 
-function getBalance(operations = {}) {
+const getBalance = (operations = {}) => {
   if (!isEmpty(operations)) {
     let getExpence = Object.keys(operations).map(
       key => operations[key].status.expence && operations[key].currency
@@ -45,9 +45,7 @@ function getBalance(operations = {}) {
     function arraySum(array) {
       let sum = 0;
       for (let i = 0; i < array.length; i++) {
-        console.log('1', array[i]);
         sum += +array[i];
-        console.log('sum', sum);
       }
       return sum;
     }
@@ -62,7 +60,7 @@ function getBalance(operations = {}) {
       />
     );
   }
-}
+};
 const OperationsList = ({ operations = {} }) => {
   return (
     <Column>

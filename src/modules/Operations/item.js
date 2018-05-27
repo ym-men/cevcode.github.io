@@ -2,11 +2,19 @@ import React from 'react';
 import { Row, Column } from 'ui/Layout';
 import cx from 'classnames';
 import Title from 'ui/Title';
+import firebase from 'firebase';
 import Description from 'ui/Description';
+import { firebaseConnect } from 'react-redux-firebase';
 import Price from 'ui/Price';
+import { prettifyTimestamp } from './helpers';
 
-const OperationItem = ({ operation }) => {
-  const { status, description, currency, currencySelect, onClick } = operation;
+const OperationItem = ({ operation, id }) => {
+  const { status, description, currency, currencySelect, time } = operation;
+  const ref = firebase.ref('/operations');
+  const removeItem = (id, ref) => {
+    ref.child(id).remove();
+  };
+  console.log('test', status.income && +currency);
   return (
     <Row
       className={cx(
@@ -17,25 +25,27 @@ const OperationItem = ({ operation }) => {
     >
       <Column>
         <Title containerClassName="operation__title">{description}</Title>
-        {/*<Description>{new Date().getTime()}</Description>*/}
+        <Description className="operation__title">
+          {prettifyTimestamp(time)}
+        </Description>
       </Column>
       <Row jc="flex-end">
         <div className="operation__amount">
           <Price
             currency={status.expence && currencySelect.label}
-            amount={status.expence && currency}
+            amount={status.expence && +currency}
           />
         </div>
         <div className="operation__amount">
           <Price
             currency={status.income && currencySelect.label}
-            amount={status.income && currency}
+            amount={status.income && +currency}
           />
         </div>
       </Row>
-      <div onClick={() => onClick}>x</div>
+      <div className="operation__remove" onClick={() => removeItem(id, ref)} />
     </Row>
   );
 };
 
-export default OperationItem;
+export default firebaseConnect()(OperationItem);

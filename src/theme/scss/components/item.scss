@@ -39,4 +39,21 @@
   &__title {
     margin-left: rem(50px);
   }
+  &__remove {
+    cursor: pointer;
+    font-size: rem(17px);
+    position: relative;
+    &:before {
+      cursor: pointer;
+      content: '';
+      position: absolute;
+      background-repeat: no-repeat;
+      background-size: cover;
+      top: rem(-7px);
+      right: 0;
+      width: rem(14px);
+      height:  rem(14px);
+      background-image: url('src/static/img/icons/close_icon.svg');
+    }
+  }
 }

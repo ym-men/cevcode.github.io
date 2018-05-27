@@ -7,6 +7,7 @@ import Input from 'ui/Fields/Input';
 import { connect } from 'react-redux';
 import { withFirebase } from 'react-redux-firebase';
 import Button from 'ui/Button';
+import firebase from 'firebase';
 
 const statuses = [
   { expence: 'expence', label: 'Expence' },
@@ -35,7 +36,8 @@ class Form extends React.Component {
     event.preventDefault();
     const model = this.form.getModel();
     const { firebase } = this.props;
-    const result = await firebase.push('operations', model);
+    model.time = firebase.database.ServerValue.TIMESTAMP;
+    await firebase.push('operations', model);
   }
 
   render() {

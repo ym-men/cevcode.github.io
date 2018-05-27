@@ -1,7 +1,0 @@
-@import '../index.scss';
-.header {
-  margin-top: rem(80px);
-  @include desktop-high {
-    margin-top: rem(60px);
-  }
-}
